@@ -7,8 +7,7 @@ namespace ReactMaaserTrackerMUI.Data
         public int Id { get; set; }
         public decimal Amount { get; set; }
         public DateTime IncomeDate { get; set; }
-        public int SourceId { get; set; }
-        [JsonIgnore]
+        public int SourceId { get; set; }       
         public Source Source { get; set; }
 
     }

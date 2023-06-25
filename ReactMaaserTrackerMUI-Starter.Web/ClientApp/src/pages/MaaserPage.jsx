@@ -9,7 +9,6 @@ const MaaserPage = () => {
   useEffect(() => {
     const getMaaser = async () => {
       const { data } = await axios.get('/api/maaser/getmaaser')
-      console.log(data)
       setMaaser(data)
     }
     getMaaser();

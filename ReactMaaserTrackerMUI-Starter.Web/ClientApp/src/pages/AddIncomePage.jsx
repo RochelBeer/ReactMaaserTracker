@@ -5,7 +5,6 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 
-
 const AddIncomePage = () => {
 
     const [sources, setSource] = useState([]);

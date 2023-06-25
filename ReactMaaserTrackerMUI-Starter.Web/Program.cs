@@ -1,4 +1,6 @@
 
+using System.Text.Json.Serialization;
+
 namespace ReactMaaserTrackerMUI_Starter.Web
 {
     public class Program
@@ -8,6 +10,12 @@ namespace ReactMaaserTrackerMUI_Starter.Web
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+
+            builder.Services.AddControllersWithViews().
+               AddJsonOptions(options =>
+               {
+                   options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+               });
 
             builder.Services.AddControllersWithViews();
 

@@ -8,24 +8,18 @@ const OverviewPage = () => {
   const [totalMaaser, setTotalMaaser] = useState(0);
 
   useEffect(() => {
-
     getTotalIncome();
     getTotalMaaser();
   }, [])
 
-  // setInterval(() => {
-  //   getTotalIncome();
-  //   getTotalMaaser();
-  // }, 1000);
-
-    const getTotalIncome = async () => {
-      const { data } = await axios.get('/api/maaser/totalincome')
-      setTotalIncome(data)
-    }
-    const getTotalMaaser = async () => {
-      const { data } = await axios.get('/api/maaser/totalmaaser')
-      setTotalMaaser(data)
-    }
+  const getTotalIncome = async () => {
+    const { data } = await axios.get('/api/maaser/totalincome')
+    setTotalIncome(data)
+  }
+  const getTotalMaaser = async () => {
+    const { data } = await axios.get('/api/maaser/totalmaaser')
+    setTotalMaaser(data)
+  }
 
   return (
     <Container

@@ -17,7 +17,7 @@ namespace ReactMaaserTrackerMUI.Data
         public List<Source> GetSources()
         {
             using var context = new DataContext(_connectionString);
-            return context.Sources.Include(i=> i.Incomes).ToList();
+            return context.Sources.Include(i => i.Incomes).ToList();
         }
         public void AddIncome(Income income)
         {
@@ -57,7 +57,8 @@ namespace ReactMaaserTrackerMUI.Data
         public List<Income> GetIncomes()
         {
             using var context = new DataContext(_connectionString);
-            return context.Income.Include(i => i.Source).ToList();
+            var list = context.Income.Include(i => i.Source).ToList();
+            return list;
         }
         public decimal TotalIncome()
         {
@@ -71,12 +72,6 @@ namespace ReactMaaserTrackerMUI.Data
             var totalMaaser = context.Maaser.Sum(i => i.Amount);
             return totalMaaser;
         }
-        //public List<Source> SortedBySource()
-        //{
-        //    using var context = new DataContext(_connectionString);
-        //    return context.Sources.Include(s => s.Incomes).ToList();
-        //    //return context.Income.OrderBy(i => i.Source).ToList();
-        //}
 
     }
 }

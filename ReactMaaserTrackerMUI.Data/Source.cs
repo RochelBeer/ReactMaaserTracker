@@ -13,5 +13,42 @@ namespace ReactMaaserTrackerMUI.Data
         public List<Income> Incomes { get; set; }
        
         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

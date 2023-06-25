@@ -3,9 +3,10 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
 const ManageSourcesPage = () => {
+
   const [sources, setSources] = useState([]);
   const [open, setOpen] = useState(false);
-  const [selectedSource, setSelectedSource] = useState({id:'', label:''});
+  const [selectedSource, setSelectedSource] = useState({ id: '', label: '' });
   const [editingSource, setEditingSource] = useState(false);
 
   const getsources = async () => {
@@ -17,7 +18,7 @@ const ManageSourcesPage = () => {
     getsources();
   }, [])
 
-  const handleOpen = (source = {id:'', label:''}) => {
+  const handleOpen = (source = { id: '', label: '' }) => {
     setOpen(true);
     setSelectedSource(source);
     setEditingSource(!source);
@@ -25,28 +26,24 @@ const ManageSourcesPage = () => {
 
   const handleClose = () => {
     setOpen(false);
-    setSelectedSource({id:'', label:''});
+    setSelectedSource({ id: '', label: '' });
     setEditingSource(false);
   };
 
   const handleAddEdit = async () => {
     if (editingSource) {
-      console.log(selectedSource)
-      await axios.post('/api/maaser/editsource', {  label: selectedSource.label, id: selectedSource.id  })
+      await axios.post('/api/maaser/editsource', { label: selectedSource.label, id: selectedSource.id })
     } else {
-      console.log('add!!!')
-      console.log(selectedSource)
-      await axios.post('/api/maaser/addsource', { label: selectedSource.label})
+      await axios.post('/api/maaser/addsource', { label: selectedSource.label })
     }
     getsources();
     handleClose();
   };
 
   const handleDelete = async (sourceToDelete) => {
-    console.log(sourceToDelete)
     await axios.post('/api/maaser/deletesource', sourceToDelete)
     getsources();
-   };
+  };
 
   return (
     <Container>
@@ -76,10 +73,17 @@ const ManageSourcesPage = () => {
           </TableBody>
         </Table>
       </TableContainer>
+
       <Dialog open={open} onClose={handleClose} fullWidth maxWidth="md">
         <DialogTitle>{editingSource ? 'Edit Source' : 'Add Source'}</DialogTitle>
         <DialogContent>
-          <TextField autoFocus margin="dense" label="Source" name='label' type="text" fullWidth value={selectedSource.label} onChange={(e) =>{setSelectedSource({...selectedSource, label:e.target.value})}} />
+          <TextField autoFocus margin="dense"
+            label="Source"
+            name='label'
+            type="text"
+            fullWidth value={selectedSource.label}
+            onChange={(e) => { setSelectedSource({ ...selectedSource, label: e.target.value }) }}
+          />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
