@@ -1,6 +1,6 @@
 # ReactMaaserTracker
-The Maaser Tracker is an application that utilizes C# in the backend and React in the frontend.
-The user can add income, maaser payments and sources of income to this site and effectively keep track of his Maaser obligation.
+The Maaser Tracker is an application that utilizes C# in the backend and React with MUI in the frontend.
+The user can track income, maaser payments and income sources to this site and effectively calculate his Maaser obligation.
 There is an overview page that displays accurate data about the state of his income and Maaser,
 and an Income page where the user can sort all his income by source.
 
